@@ -6,7 +6,7 @@
 /*      solve(From,To,Path)                         						   		*/
 /*                                                  						   		*/
 /*   which, given locations From and To, finds a Path going from From to To.   		*/
-/*   From and To are given as two element % lists, and Path should be a list   		*/
+/*   From and To are given as two element lists, and Path should be a list   		*/
 /*   of two-element lists. The first element of Path should be From, and the   	  */
 /*   last element should be To. Moves can be made horizontally or vertically,  		*/
 /*   but not diagonally.													   		*/
@@ -22,4 +22,9 @@
 /*   Date: 12 April 2015							                           		*/
 /*                                                  						   		*/
 /* ******************************************************************************** */
+					
+freeSpace([X,Y]) :- not(barrier(X,Y)),
+	 				mazeSize(BoardX,BoardY),
+					X=<BoardX, 
+					Y=<BoardY.					
 
