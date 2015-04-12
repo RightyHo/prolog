@@ -22,9 +22,17 @@
 /*   Date: 12 April 2015							                           		*/
 /*                                                  						   		*/
 /* ******************************************************************************** */
+		
+% Checks if a cell with co-ordinates (X,Y) falls within the maze boundary and confirms
+% whether or not the cell is occupied by a barrier.		
 					
 freeSpace([X,Y]) :- not(barrier(X,Y)),
 	 				mazeSize(BoardX,BoardY),
 					X=<BoardX, 
 					Y=<BoardY.					
+					
+% Returns a list with containing the co-ordinates of all possible moves from a cell. 
 
+possMoves([X,Y],L) :- Xup is X-1,freeSpace([Xup,Y]),append([Xup,Y],L)
+
+% solve([FromX,FromY],[ToX,ToY],Path) :- 
