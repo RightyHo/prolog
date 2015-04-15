@@ -56,11 +56,11 @@ possibleStep([X,Y],[X,Ynew]) :- Ynew is Y-1,
 solve([FromX,FromY],[ToX,ToY],ThePath) :-  solve([FromX,FromY],[ToX,ToY],[],Path),
 										   reverse(Path,[],ThePath).
 							
-solve([X,Y],[X,Y],Route,[Route]).		% should i keep the [] around the Route return variable?  Add ! here?
+solve([X,Y],[X,Y],Route,Route).		% should i keep the [] around the Route return variable?
 
 solve([FromX,FromY],[ToX,ToY],AccRoute,Path) :- possibleStep([FromX,FromY],[ViaX,ViaY]),
-					  						 	not(member([ViaX,ViaY],AccRoute)),
-					  					   	 	solve([ViaX,ViaY],[ToX,ToY],[[ViaX,ViaY]|AccRoute],Path).
+					  						 	not(member([ViaX,ViaY],AccRoute)), 
+					  					   	 	solve([ViaX,ViaY],[ToX,ToY],[[ViaX,ViaY]|AccRoute],Path), !.
 	
 % standard reverse/3 predicate
 
