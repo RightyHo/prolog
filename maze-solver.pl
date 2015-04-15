@@ -54,7 +54,8 @@ possibleStep([X,Y],[X,Ynew]) :- Ynew is Y-1,
 % finds a Path going from From to To avoiding barriers and staying within the board limits
 
 solve([FromX,FromY],[ToX,ToY],ThePath) :-  solve([FromX,FromY],[ToX,ToY],[[FromX,FromY]|[]],Path),
-										   reverse(Path,[],ThePath).
+										   reverse(Path,[],ThePath),
+										   printPath(ThePath).
 							
 solve([X,Y],[X,Y],Route,Route).		
 
@@ -68,7 +69,12 @@ reverse([],X,X).
 
 reverse([H|T],Acc,Output) :- reverse(T,[H|Acc],Output). 
 
+% loop to print out the various step members of the path list
 
+printPath([]).
+
+printPath([H|T]) :- write(H), nl,
+					printPath(T).
 
 
 
