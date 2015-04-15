@@ -53,10 +53,10 @@ possibleStep([X,Y],[X,Ynew]) :- Ynew is Y-1,
 						 	
 % finds a Path going from From to To avoiding barriers and staying within the board limits
 
-solve([FromX,FromY],[ToX,ToY],ThePath) :-  solve([FromX,FromY],[ToX,ToY],[],Path),
+solve([FromX,FromY],[ToX,ToY],ThePath) :-  solve([FromX,FromY],[ToX,ToY],[[FromX,FromY]|[]],Path),
 										   reverse(Path,[],ThePath).
 							
-solve([X,Y],[X,Y],Route,Route).		% should i keep the [] around the Route return variable?
+solve([X,Y],[X,Y],Route,Route).		
 
 solve([FromX,FromY],[ToX,ToY],AccRoute,Path) :- possibleStep([FromX,FromY],[ViaX,ViaY]),
 					  						 	not(member([ViaX,ViaY],AccRoute)), 
