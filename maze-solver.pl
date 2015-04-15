@@ -34,7 +34,7 @@ freeSpace([X,Y]) :- not(barrier(X,Y)),
 					
 % checks whether a step from point A to point B is possible.  Returns true if possible and false otherwise.
 					
-possibleStep([Xa,Ya],[Xb,Yb]) :- Xb is Xa+1,
+possibleStep([Xa,Ya],[Xb,Yb]) :- Xb is Xa+1,	% should i change Yb variable to Ya and remove next line?
 					  	 Yb==Ya,
 					  	 freeSpace([Xa,Ya]),
 					  	 freeSpace([Xb,Yb]).
@@ -53,13 +53,13 @@ possibleStep([Xa,Ya],[Xb,Yb]) :- Xb==Xa,
 possibleStep([Xa,Ya],[Xb,Yb]) :- Xb==Xa,
 					  	 Yb is Ya-1,
 					  	 freeSpace([Xa,Ya]),
-					  	 freeSpace([Xb,Yb]).
+					  	 freeSpace([Xb,Yb]).						 
 						 	
 % finds a Path going from From to To avoiding barriers and staying within the board limits
 
 solve([FromX,FromY],[ToX,ToY],Path) :-  solve([FromX,FromY],[ToX,ToY],[],Path).
 							
-solve([X,Y],[X,Y],Route,[Route]).
+solve([X,Y],[X,Y],Route,[Route]).				% should i keep the [] around Route?
 
 % solve([FromX,FromY],[ToX,ToY],AccRoute,Path) :- possibleStep([FromX,FromY],[ToX,ToY]).
 
