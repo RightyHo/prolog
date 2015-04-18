@@ -1,5 +1,3 @@
-% working_directory(_,'Users/andrewho/Documents/Programming/MSc/Paradigms/Prolog/prolog').
-
 /* ******************************************************************************** */
 /*                                                  						   		*/
 /*   Your task is to write a predicate:             								*/
@@ -123,28 +121,3 @@ printElement([X|L],L) :- write(X).
 
 
 
-
-
-
-
-
-
-
-/* ******************************************************************************** */
-/*   Rough Working Notes                               						   		*/
-/* ******************************************************************************** */
-
-% Returns a list with containing the co-ordinates of all possible moves from a cell. 
-
-% moveUp([X,Y],[Xup,Y]) :- Xup is X-1.
-% moveDown([X,Y],[Xdown,Y]) :- Xdown is X+1.
-% moveLeft([X,Y],[X,Yleft]) :- Yleft is Y-1.
-% moveRight([X,Y],[X,Yright]) :- Yright is Y+1.
-
-% filterMoves(A,In,Out) :- exclude(not(freeSpace(A)),In,Out).
-
-% possMoves([X,Y],M) :- moveUp([X,Y],Up),
-%					  moveDown([X,Y],Down),
-%					  moveLeft([X,Y],Left),
-%					  moveRight([X,Y],Right),					  					  
-%					  filterMoves(A,[Up,Down,Left,Right],M).
